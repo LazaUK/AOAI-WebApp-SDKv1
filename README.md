@@ -11,4 +11,4 @@ This guide walks you through deploying minimalistic Flask application with Azure
 - in Web app's **Environment Variable** settings, create _SCM_DO_BUILD_DURING_DEPLOYMENT_ variable and set its value to "**true**";
 > Note: SCM_DO_BUILD_DURING_DEPLOYMENT setting will ensure that Web app downloads required Python packages, listed in the provided _**requirements.txt**_ file.
 - if setup correctly, your Web app settings should look like this:
-[step2_env_var](images/env_var.png)
+![step2_env_var](images/env_var.png)
