@@ -30,4 +30,4 @@ az webapp deploy --resource-group <Web_App_RG> --name <Web_App_Name> --src-path 
 
 ### Step 5. Web App UI:
 - The home page of the Flask web app is super-minimalistic. You type your question, click **Ask** button and Web app adds new pair of question/answers to its Web page:
-![step5_app_ui](iamges/app_ui.png)
+![step5_app_ui](images/app_ui.png)
