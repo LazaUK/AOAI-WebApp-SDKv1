@@ -1,1 +1,56 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo AOAI Web app</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+    <h1>Ask GPT model a question</h1>
+    <form id="question-form">
+        <label for="question">Your question:</label>
+        <input type="text" id="question" name="question" required>
+        <button type="submit">Ask</button>
+    </form>
+    <div id="answer"></div>
+    
+    <table id="qa-table">
+        <thead>
+            <tr>
+                <th>Question</th>
+                <th>Answer</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        document.getElementById('question-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const question = document.getElementById('question').value;
+            const response = await fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    'question': question
+                })
+            });
+            const data = await response.json();
+            // document.getElementById('answer').innerText = data.answer;
+
+            const newRow = document.createElement('tr');
+            const questionCell = document.createElement('td');
+            const answerCell = document.createElement('td');
+            questionCell.textContent = question;
+            answerCell.textContent = data.answer;
+            newRow.appendChild(questionCell);
+            newRow.appendChild(answerCell);
+            document.getElementById('qa-table').getElementsByTagName('tbody')[0].appendChild(newRow);
+        });
+    </script>
+</body>
+</html>
