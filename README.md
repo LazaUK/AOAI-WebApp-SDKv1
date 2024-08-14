@@ -12,3 +12,9 @@ This guide walks you through deploying minimalistic Flask application with Azure
 > Note: SCM_DO_BUILD_DURING_DEPLOYMENT setting will ensure that Web app downloads required Python packages, listed in the provided _**requirements.txt**_ file.
 - if setup correctly, your Web app settings should look like this:
 ![step2_env_var](images/env_var.png)
+
+### 3. Configure Authentication:
+- in Web app's **Identity** settings, set the status of system-assigned managed identity _ON_.
+> Note: this demo shows how to authenticate with managed identity. You may implementation detals of other potential options [here](managed_identity.png).
+![step3_managed_identity](images/managed_identity.png)
+- in Azure OpenAI's **Access Control (IAM)** settings, assign Web app's managed identity _Cognitive Services OpenAI User_ role.
